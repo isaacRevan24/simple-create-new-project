@@ -1,30 +1,18 @@
 package types
 
-import "fmt"
+/*
+Base structure of a indeterminate project
+Project how have a defined start date but not a defined end date
+*/
 
 // sections list
 type sections map[string]float32
 
 // Indeterminate type project
 type Indeterminate struct {
-	//Base structure of a indeterminate project
-	//Project how have a start but not a end date
 	ProjectType string
 	Structure   sections
 	StartDate   string
-}
-
-// Concrete type project
-type Concrete struct {
-	//Base structure of a concrete project
-	//Project how have a start and end date
-	Indeterminate
-	EndDate string
-}
-
-//ProjectInformation Show the current information of the Indeterminate project
-func (i *Indeterminate) ProjectInformation() {
-	fmt.Println(i.ProjectType, i.Structure, i.StartDate)
 }
 
 // AddSection add a new section to the structure
@@ -58,11 +46,6 @@ func getIndeterminateStructureSections(i *Indeterminate, sectionNames []string) 
 	return i.Structure
 }
 
-func getConcreteStructureSections(c *Concrete, sectionNames []string) sections {
-	c.AddSection(sectionNames)
-	return c.Structure
-}
-
 // CreateIndeterminateProjectStructure return a complete structure instance of a project structure
 func (i *Indeterminate) CreateIndeterminateProjectStructure(sectionNames []string, startDate string) Indeterminate {
 	structure := getIndeterminateStructureSections(i, sectionNames)
@@ -74,22 +57,4 @@ func (i *Indeterminate) CreateIndeterminateProjectStructure(sectionNames []strin
 	}
 
 	return indeterminateProject
-}
-
-// CreateConcreteProjectStructure return a complete structure instance of a project structure
-func (c *Concrete) CreateConcreteProjectStructure(sectionNames []string, startDate string, endDate string) Concrete {
-	structure := getConcreteStructureSections(c, sectionNames)
-
-	indeterminate := Indeterminate{
-		ProjectType: "Concrete",
-		Structure:   structure,
-		StartDate:   startDate,
-	}
-
-	concreteType := Concrete{
-		Indeterminate: indeterminate,
-		EndDate:       endDate,
-	}
-
-	return concreteType
 }

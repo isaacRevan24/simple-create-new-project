@@ -53,3 +53,5 @@ func main() {
 	fmt.Println("--------------------")
 
 }
+
+//TODO: Refactor all the project logic into a separate package
