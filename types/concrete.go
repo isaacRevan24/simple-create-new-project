@@ -34,8 +34,8 @@ func (c *Concrete) CreateConcreteProjectStructure(sectionNames []string, startDa
 		Indeterminate: indeterminate,
 		EndDate:       endDate,
 	}
-
 	return concreteType
 }
 
 //TODO: Make only the struct and main functions exported
+//TODO: Change package name, because types is a std package name

@@ -15,6 +15,12 @@ type Indeterminate struct {
 	StartDate   string
 }
 
+// ProjectStructure do x
+// type ProjectStructure interface {
+// 	getConcreteStructureSections()
+// 	getIndeterminateStructureSections()
+// }
+
 // AddSection add a new section to the structure
 func (i *Indeterminate) AddSection(sectionNames []string) {
 	// Initialice the structure map

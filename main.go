@@ -4,32 +4,18 @@ import (
 	"fmt"
 
 	"github.com/isaacRevan24/simple-create-new-project/project"
-	"github.com/isaacRevan24/simple-create-new-project/types"
 )
 
 func main() {
+	members := []string{"eileen", "arlette", "mab"}
 	project := project.Project{}
+	sections := []string{"Backend", "Frontend", "DataBase"}
+	dates := [2]string{"hoy", "mañana"}
+
+	project = project.GenerateProject(false, "Simple", 1, "isaac", members, "supe cool", true, sections, dates)
 	fmt.Println(project)
-	fmt.Println("--------------------")
-	// Create a indeterminate project
-	indeterminateProject := types.Indeterminate{}
-	// List of sections added
-	sectionNames := []string{"Frontend", "Backend", "Base de datos", "Photoshop", "Publicidad"}
-	// Start date of the project
-	startDate := "24/4/2020"
-
-	// Creating the project type and overwrite the empty instance
-	indeterminateProject = indeterminateProject.CreateIndeterminateProjectStructure(sectionNames, startDate)
-	fmt.Println(indeterminateProject)
-	fmt.Println("--------------------")
-
-	concreteProject := types.Concrete{}
-
-	endDate := "24/4/2020"
-	concreteProject = concreteProject.CreateConcreteProjectStructure(sectionNames, startDate, endDate)
-	fmt.Println(concreteProject)
-	fmt.Println("--------------------")
-
 }
 
 //TODO: Refactor all the project logic into a separate package
+//TODO: Add significative comments
+//TODO: Improve main funcion order
