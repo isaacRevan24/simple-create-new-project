@@ -11,6 +11,7 @@ type Concrete struct {
 	EndDate string
 }
 
+// Return the concrete structure with the sections added and the %
 func getConcreteStructureSections(c *Concrete, sectionNames []string) sections {
 	c.AddSection(sectionNames)
 	return c.Structure
@@ -18,14 +19,17 @@ func getConcreteStructureSections(c *Concrete, sectionNames []string) sections {
 
 // CreateConcreteProjectStructure return a complete structure instance of a project structure
 func (c *Concrete) CreateConcreteProjectStructure(sectionNames []string, startDate string, endDate string) Concrete {
+	// Generate the project structure with all sections and %
 	structure := getConcreteStructureSections(c, sectionNames)
 
+	// Embedded indterminate in concrete type
 	indeterminate := Indeterminate{
 		ProjectType: "Concrete",
 		Structure:   structure,
 		StartDate:   startDate,
 	}
 
+	// Concrete type declaration and initialization
 	concreteType := Concrete{
 		Indeterminate: indeterminate,
 		EndDate:       endDate,
@@ -34,4 +38,4 @@ func (c *Concrete) CreateConcreteProjectStructure(sectionNames []string, startDa
 	return concreteType
 }
 
-//TODO: Refactor this package in a single file for every type of project
+//TODO: Make only the struct and main functions exported

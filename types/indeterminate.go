@@ -41,6 +41,7 @@ func (i *Indeterminate) AddSection(sectionNames []string) {
 	}
 }
 
+// Return the indeterminate structure with the sections added and the %
 func getIndeterminateStructureSections(i *Indeterminate, sectionNames []string) sections {
 	i.AddSection(sectionNames)
 	return i.Structure
@@ -48,8 +49,10 @@ func getIndeterminateStructureSections(i *Indeterminate, sectionNames []string) 
 
 // CreateIndeterminateProjectStructure return a complete structure instance of a project structure
 func (i *Indeterminate) CreateIndeterminateProjectStructure(sectionNames []string, startDate string) Indeterminate {
+	// Generate the project structure with all sections and %
 	structure := getIndeterminateStructureSections(i, sectionNames)
 
+	// Indeterminate type declaration and initialization
 	indeterminateProject := Indeterminate{
 		ProjectType: "Indeterminate",
 		Structure:   structure,
