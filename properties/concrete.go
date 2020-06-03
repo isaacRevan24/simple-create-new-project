@@ -1,4 +1,4 @@
-package types
+package properties
 
 /*
 Base structure of a concrete project
@@ -36,6 +36,3 @@ func (c *Concrete) CreateConcreteProjectStructure(sectionNames []string, startDa
 	}
 	return concreteType
 }
-
-//TODO: Make only the struct and main functions exported
-//TODO: Change package name, because types is a std package name

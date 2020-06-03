@@ -1,10 +1,10 @@
 package project
 
 import (
-	"github.com/isaacRevan24/simple-create-new-project/types"
+	"github.com/isaacRevan24/simple-create-new-project/properties"
 )
 
-// TODO: Make structureType just accept concrete and indeterminate type
+// TODO: Make structureType only accept concrete and indeterminate type
 // Can be concrete or indeterminate
 type structureType interface{}
 
@@ -19,33 +19,62 @@ type Project struct {
 	ProjectStructure structureType
 }
 
+// generateIndeterminateStructure generate the Indeterminate project structure
+func generateIndeterminateStructure(sections []string, startDate string) structureType {
+	std := properties.Indeterminate{}
+	std = std.CreateIndeterminateProjectStructure(sections, startDate)
+	return structureType(std)
+}
+
+// generateConcreteStructure generate the concrete project structure
+func generateConcreteStructure(sections []string, startDate string, endDate string) structureType {
+	std := properties.Concrete{}
+	std = std.CreateConcreteProjectStructure(sections, startDate, endDate)
+	return structureType(std)
+}
+
 // GenerateProject return a project instance
 func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint8, manager string, members []string, description string, visibility bool, sections []string, dates [2]string) Project {
 
 	/*
-		typeStruct
-		true = concrete
-		false = indeterminate
+		1. typeStruct bool
+		false = concrete
+		true = indeterminate
 
-		dates
+		2. projectName string
+
+		3. icon uint8
+
+		4. manager string
+
+		5. members []string
+
+		6. description string
+
+		7. visibility bool
+
+		8. sections []string
+
+		9. dates [2]string
 		dates[0] = start date
 		dates[1] = end date
+
+		return structureType
 	*/
-	// TODO: fix nil initialization
+
+	// Initialize structure with the return type
 	var structure structureType
+	// start and end date as independent variables
 	startDate := dates[0]
 	endDate := dates[1]
 
+	// If true generate a indeterminate structure else a concrete structure
 	if typeStruct {
 		// indefinite
-		std := types.Indeterminate{}
-		std = std.CreateIndeterminateProjectStructure(sections, startDate)
-		structure = structureType(std)
+		structure = generateIndeterminateStructure(sections, startDate)
 	} else {
 		// concrete
-		std := types.Concrete{}
-		std = std.CreateConcreteProjectStructure(sections, startDate, endDate)
-		structure = structureType(std)
+		structure = generateConcreteStructure(sections, startDate, endDate)
 	}
 
 	// Project declaration and initialization

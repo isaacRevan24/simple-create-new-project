@@ -1,4 +1,4 @@
-package types
+package properties
 
 /*
 Base structure of a indeterminate project
