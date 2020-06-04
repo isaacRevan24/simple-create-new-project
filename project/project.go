@@ -1,6 +1,8 @@
 package project
 
 import (
+	"fmt"
+
 	"github.com/isaacRevan24/simple-create-new-project/properties"
 	"github.com/isaacRevan24/simple-create-new-project/users"
 )
@@ -30,6 +32,19 @@ func generateConcreteStructure(sections []string, startDate string, endDate stri
 	std := properties.Concrete{}
 	std = std.CreateConcreteProjectStructure(sections, startDate, endDate)
 	return structureType(std)
+}
+
+// LogProject print all the project information
+func (p *Project) LogProject() {
+	logMessage := `		Project information
+	ProjectID: 		 %v
+	ProjectName:     %v
+	Icon: 			 %v
+	Member: 		 %v
+	Description: 	 %v
+	ProjectStructure %v`
+	fmt.Printf(logMessage, p.ProjectID, p.ProjectName, p.Icon, p.Member, p.Description, p.ProjectStructure)
+	fmt.Println("")
 }
 
 // GenerateProject return a project instance

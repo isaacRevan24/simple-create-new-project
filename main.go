@@ -26,7 +26,8 @@ func main() {
 
 	// Passing all the project argument and generate a complete formed project
 	project = project.GenerateProject(typesctruct, projectName, icon, manager, description, sections, dates)
-	fmt.Println(project)
+	// fmt.Println(project)
+	project.LogProject()
 
 	// Members to send project solicitude
 	membersRequest := map[string]string{"@eileen02": "eileen@email.com", "@carpedi": "arlete@outlook.com", "@mab.cad": "mab_cat@gmail.com"}
