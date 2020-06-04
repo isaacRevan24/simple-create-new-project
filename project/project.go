@@ -15,7 +15,6 @@ type Project struct {
 	Manager          string
 	Members          map[string]string
 	Description      string
-	Visibility       bool
 	ProjectStructure structureType
 }
 
@@ -34,7 +33,7 @@ func generateConcreteStructure(sections []string, startDate string, endDate stri
 }
 
 // GenerateProject return a project instance
-func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint8, manager string, members map[string]string, description string, visibility bool, sections []string, dates [2]string) Project {
+func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint8, manager string, members map[string]string, description string, sections []string, dates [2]string) Project {
 
 	/*
 		1. typeStruct bool
@@ -51,11 +50,9 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 
 		6. description string
 
-		7. visibility bool
+		7. sections []string
 
-		8. sections []string
-
-		9. dates [2]string
+		8. dates [2]string
 		dates[0] = start date
 		dates[1] = end date
 
@@ -84,7 +81,6 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 		Manager:          manager,
 		Members:          members,
 		Description:      description,
-		Visibility:       visibility,
 		ProjectStructure: structure,
 	}
 

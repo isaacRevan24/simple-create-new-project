@@ -18,7 +18,6 @@ func main() {
 	manager := "Isaac Atencio"
 	membersRequest := map[string]string{"@eileen02": "eileen@email.com", "@carpedi": "arlete@outlook.com", "@mab.cad": "mab_cat@gmail.com"}
 	description := "Super cool project"
-	visibility := true
 	project := project.Project{}
 	sections := []string{"Backend", "Frontend", "DataBase"}
 	startDate := "hoy"
@@ -29,15 +28,15 @@ func main() {
 	services.SendProjectSolicitude(membersRequest)
 
 	// Passing all the project argument and generate a complete formed project
-	project = project.GenerateProject(typesctruct, projectName, icon, manager, membersRequest, description, visibility, sections, dates)
+	project = project.GenerateProject(typesctruct, projectName, icon, manager, membersRequest, description, sections, dates)
 	fmt.Println(project)
 
 	t := time.Since(start)
 	fmt.Println(t)
 }
 
-// TODO: Organize all the variables in order
 // TODO: create a variable that generate a hash that is gonna be the ID of the project
+// TODO: Organize all the variables in order
 // TODO: Remove member of the project instance and to the solicitude service
 // TODO: Make optimization with pointers and concurrency
 // TODO: Make user package
