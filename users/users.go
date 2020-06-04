@@ -9,6 +9,7 @@ type User struct {
 }
 
 // GenerateMember Return a User
+//! In this case only return the manager
 func GenerateMember(member map[string]string) User {
 	// Initialize a empty User
 	var user User

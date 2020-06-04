@@ -5,12 +5,12 @@ import (
 	"github.com/isaacRevan24/simple-create-new-project/users"
 )
 
-// TODO: Make structureType only accept concrete and indeterminate type
 // Can be concrete or indeterminate
 type structureType interface{}
 
 // Project properties definition
 type Project struct {
+	ProjectID        string
 	ProjectName      string
 	Icon             uint8
 	Member           users.User
@@ -75,8 +75,12 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 	// Generate a member, in this case the only member is the manager
 	member := users.GenerateMember(manager)
 
+	// Generate the project id
+	ID := GenerateID(projectName)
+
 	// Project declaration and initialization
 	project := Project{
+		ProjectID:        ID,
 		ProjectName:      projectName,
 		Icon:             icon,
 		Member:           member,
@@ -87,4 +91,4 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 	return project
 }
 
-// TODO: Add ProjectID as a parameter of the project type struct
+// TODO: Make a file called generate structure, to separate structure from project logic

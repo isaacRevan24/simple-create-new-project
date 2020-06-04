@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	// Time testing
 	start := time.Now()
 
 	// Arguments of GenerateProject
@@ -27,7 +28,7 @@ func main() {
 	project = project.GenerateProject(typesctruct, projectName, icon, manager, description, sections, dates)
 	fmt.Println(project)
 
-	// Arguments for project solicitude
+	// Members to send project solicitude
 	membersRequest := map[string]string{"@eileen02": "eileen@email.com", "@carpedi": "arlete@outlook.com", "@mab.cad": "mab_cat@gmail.com"}
 
 	// Sending project solicitude
@@ -38,7 +39,7 @@ func main() {
 }
 
 // TODO: Add to manager "User name" aka the specified name of the user like twitter
-// TODO: create a variable that generate a hash that is gonna be the ID of the project
+// TODO: Add a better log to the project information
 // TODO: Organize all the variables in order
 // TODO: See hoy to deal with the icon type
 // TODO: Make optimization with pointers and concurrency
