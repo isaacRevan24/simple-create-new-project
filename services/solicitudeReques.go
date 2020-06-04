@@ -8,3 +8,5 @@ func SendProjectSolicitude(membersRequest map[string]string) {
 		fmt.Println("Sended request to ", userName, " . At the email: ", email)
 	}
 }
+
+// TODO: Add to SendProjectSolicitude manager name and project name and project ID at the request

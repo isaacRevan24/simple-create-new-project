@@ -61,3 +61,5 @@ func (i *Indeterminate) CreateIndeterminateProjectStructure(sectionNames []strin
 
 	return indeterminateProject
 }
+
+// TODO: Only store the section names as a []string, delete the %

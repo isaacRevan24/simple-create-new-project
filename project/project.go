@@ -2,6 +2,7 @@ package project
 
 import (
 	"github.com/isaacRevan24/simple-create-new-project/properties"
+	"github.com/isaacRevan24/simple-create-new-project/users"
 )
 
 // TODO: Make structureType only accept concrete and indeterminate type
@@ -12,8 +13,7 @@ type structureType interface{}
 type Project struct {
 	ProjectName      string
 	Icon             uint8
-	Manager          string
-	Members          map[string]string
+	Member           users.User
 	Description      string
 	ProjectStructure structureType
 }
@@ -33,7 +33,7 @@ func generateConcreteStructure(sections []string, startDate string, endDate stri
 }
 
 // GenerateProject return a project instance
-func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint8, manager string, members map[string]string, description string, sections []string, dates [2]string) Project {
+func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint8, manager map[string]string, description string, sections []string, dates [2]string) Project {
 
 	/*
 		1. typeStruct bool
@@ -44,15 +44,13 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 
 		3. icon uint8
 
-		4. manager string
+		4. manager map[string]string
 
-		5. members [string]string
+		5. description string
 
-		6. description string
+		6. sections []string
 
-		7. sections []string
-
-		8. dates [2]string
+		7. dates [2]string
 		dates[0] = start date
 		dates[1] = end date
 
@@ -74,12 +72,14 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 		structure = generateConcreteStructure(sections, startDate, endDate)
 	}
 
+	// Generate a member, in this case the only member is the manager
+	member := users.GenerateMember(manager)
+
 	// Project declaration and initialization
 	project := Project{
 		ProjectName:      projectName,
 		Icon:             icon,
-		Manager:          manager,
-		Members:          members,
+		Member:           member,
 		Description:      description,
 		ProjectStructure: structure,
 	}
