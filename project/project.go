@@ -90,3 +90,5 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 
 	return project
 }
+
+// TODO: Add ProjectID as a parameter of the project type struct
