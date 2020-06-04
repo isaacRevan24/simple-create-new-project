@@ -3,7 +3,6 @@ package project
 import (
 	"fmt"
 
-	"github.com/isaacRevan24/simple-create-new-project/properties"
 	"github.com/isaacRevan24/simple-create-new-project/users"
 )
 
@@ -18,20 +17,6 @@ type Project struct {
 	Member           users.User
 	Description      string
 	ProjectStructure structureType
-}
-
-// generateIndeterminateStructure generate the Indeterminate project structure
-func generateIndeterminateStructure(sections []string, startDate string) structureType {
-	std := properties.Indeterminate{}
-	std = std.CreateIndeterminateProjectStructure(sections, startDate)
-	return structureType(std)
-}
-
-// generateConcreteStructure generate the concrete project structure
-func generateConcreteStructure(sections []string, startDate string, endDate string) structureType {
-	std := properties.Concrete{}
-	std = std.CreateConcreteProjectStructure(sections, startDate, endDate)
-	return structureType(std)
 }
 
 // LogProject print all the project information
@@ -105,5 +90,3 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 
 	return project
 }
-
-// TODO: Make a file called generate structure, to separate structure from project logic
