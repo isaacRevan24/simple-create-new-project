@@ -12,11 +12,16 @@ func main() {
 	// Time testing
 	start := time.Now()
 
+	// Manager info
+	manager := make(map[string][2]string)
+	userID := "@isaac.revan"
+	userInfo := [2]string{"Isaac Atencio", "isaac2498@email.com"}
+	manager = map[string][2]string{userID: userInfo}
+
 	// Arguments of GenerateProject
 	typesctruct := false // true indefinite false concrete
 	projectName := "Simple"
 	icon := uint8(1)
-	manager := map[string]string{"@isaac.revan": "isaac@email.com"}
 	description := "Super cool project"
 	project := project.Project{}
 	sections := []string{"Backend", "Frontend", "DataBase"}
@@ -25,7 +30,7 @@ func main() {
 	dates := [2]string{startDate, endDate}
 
 	// Passing all the project argument and generate a complete formed project
-	project = project.GenerateProject(typesctruct, projectName, icon, manager, description, sections, dates)
+	project = project.GenerateProject(typesctruct, projectName, icon, &manager, description, sections, dates)
 
 	// fmt.Println(project)
 	project.LogProject()
@@ -41,7 +46,6 @@ func main() {
 	fmt.Println(t)
 }
 
-// TODO: Add to manager "User name" aka the specified name of the user like twitter
 // TODO: See how to deal with the icon type
 // TODO: Make optimization with pointers and concurrency
 // TODO: Research how to do date formating

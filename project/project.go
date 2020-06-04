@@ -27,13 +27,14 @@ func (p *Project) LogProject() {
 	Icon: 			 %v
 	Member: 		 %v
 	Description: 	 %v
-	ProjectStructure %v`
+		Structure 
+	%v`
 	fmt.Printf(logMessage, p.ProjectID, p.ProjectName, p.Icon, p.Member, p.Description, p.ProjectStructure)
 	fmt.Println("")
 }
 
 // GenerateProject return a project instance
-func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint8, manager map[string]string, description string, sections []string, dates [2]string) Project {
+func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint8, managerInfo *map[string][2]string, description string, sections []string, dates [2]string) Project {
 
 	/*
 		1. typeStruct bool
@@ -73,7 +74,7 @@ func (p *Project) GenerateProject(typeStruct bool, projectName string, icon uint
 	}
 
 	// Generate a member, in this case the only member is the manager
-	member := users.GenerateMember(manager)
+	member := users.GenerateMember(managerInfo)
 
 	// Generate the project id
 	ID := GenerateID(projectName)
