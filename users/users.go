@@ -2,9 +2,9 @@ package users
 
 // User type declaration
 type User struct {
+	Email    string
 	UserID   string
 	UserName string
-	Email    string
 	Manager  bool
 }
 
@@ -17,11 +17,11 @@ func GenerateMember(member *map[string][2]string) User {
 	memberBase = *member
 
 	// Assign the member map info to a user
-	for userID, email := range memberBase {
+	for email, info := range memberBase {
 		user = User{
-			UserID:   userID,
-			UserName: email[0],
-			Email:    email[1],
+			Email:    email,
+			UserName: info[0],
+			UserID:   info[1],
 			Manager:  true,
 		}
 	}

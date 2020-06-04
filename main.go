@@ -14,8 +14,8 @@ func main() {
 
 	// Manager info
 	manager := make(map[string][2]string)
-	userID := "@isaac.revan"
-	userInfo := [2]string{"Isaac Atencio", "isaac2498@email.com"}
+	userID := "isaac2498@email.com"
+	userInfo := [2]string{"Isaac Atencio", "@isaac.revan"}
 	manager = map[string][2]string{userID: userInfo}
 
 	// Arguments of GenerateProject
