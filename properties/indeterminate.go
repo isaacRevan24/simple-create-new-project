@@ -6,7 +6,7 @@ Project how have a defined start date but not a defined end date
 */
 
 // sections list
-type sections map[string]float32
+type sections []string
 
 // Indeterminate type project
 type Indeterminate struct {
@@ -18,12 +18,11 @@ type Indeterminate struct {
 // AddSection add a new section to the structure
 func (i *Indeterminate) AddSection(sectionNames []string) {
 	// Initialice the structure map
-	i.Structure = make(sections)
 	sizeSectionNames := len(sectionNames) // size ot the slice
 
 	if sizeSectionNames == 0 {
 		// Default value of "General":100 if no section is specified
-		i.Structure["General"] = float32(100)
+		i.Structure = append(i.Structure, "General")
 	} else {
 		/*
 		 Assign the custom section name to the structure of the project with
@@ -31,12 +30,9 @@ func (i *Indeterminate) AddSection(sectionNames []string) {
 		 generatin a map like this ["a":33, "b":33, "c":33]
 		*/
 
-		// Calculating the percentage of each project over 100
-		percentage := float32(100 / sizeSectionNames)
-
 		// Adding the custom section name with his specific percentage to the project structure
 		for _, value := range sectionNames {
-			i.Structure[value] = percentage
+			i.Structure = append(i.Structure, value)
 		}
 	}
 }
