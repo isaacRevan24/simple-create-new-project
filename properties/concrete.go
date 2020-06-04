@@ -34,5 +34,6 @@ func (c *Concrete) CreateConcreteProjectStructure(sectionNames []string, startDa
 		Indeterminate: indeterminate,
 		EndDate:       endDate,
 	}
+
 	return concreteType
 }
