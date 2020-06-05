@@ -39,7 +39,7 @@ func main() {
 	membersRequest := map[string]string{"@eileen02": "eileen@email.com", "@carpedi": "arlete@outlook.com", "@mab.cad": "mab_cat@gmail.com"}
 
 	// Sending project solicitude
-	services.SendProjectSolicitude(membersRequest)
+	services.SendProjectSolicitude(membersRequest, &manager, project.ProjectName, project.ProjectID)
 
 	// Execute time test
 	t := time.Since(start)

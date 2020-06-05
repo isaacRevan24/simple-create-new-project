@@ -2,11 +2,16 @@ package services
 
 import "fmt"
 
-// SendProjectSolicitude print the @user.name with their respective email
-func SendProjectSolicitude(membersRequest map[string]string) {
+// SendProjectSolicitude will send a solicitude to selected member that are
+// friends added by the manager / creator of the project
+func SendProjectSolicitude(membersRequest map[string]string, manager *map[string][2]string, project string, ID string) {
+
+	for _, info := range *manager {
+		fmt.Println("Solicitude sended by " + info[0] + " of the username" + info[1] + "at the project:" + project)
+	}
+	fmt.Println("secret ID: " + ID)
+
 	for userName, email := range membersRequest {
 		fmt.Println("Sended request to ", userName, " . At the email: ", email)
 	}
 }
-
-// TODO: Add to SendProjectSolicitude manager name and project name and project ID at the request
